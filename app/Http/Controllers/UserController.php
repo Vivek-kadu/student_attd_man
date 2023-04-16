@@ -15,45 +15,48 @@ use Illuminate\Support\Facades\Redirect;
 
 class   UserController extends Controller
 {
+
+    // student view 
     public function studentView()
     {
         $stu_data = Student::all();
         return view('student_view',compact('stu_data'));
     }
  
-
+    // attendence View page whole logic 
     public function attendenceView(Request $request)
     {
         // dd($request);
         
        
 
-        $att_stu = Student::all();
+        // $att_stu = Student::all();
+        $stu_data = Student::all();
+
         // course filter
         if(isset($request->course) && $request->course!=null){
-            $att_stu = $att_stu->where('courses_id','==',$request->course);
+            $stu_data = $stu_data->where('courses_id','==',$request->course);
         }
         // div filter 
         if(isset($request->division) && $request->division!=null){
-            $att_stu = $att_stu->where('divisions_id','==',$request->division);
+            $stu_data = $stu_data->where('divisions_id','==',$request->division);
         }
         // sem filter 
         if(isset($request->semester) && $request->semester!=null){
-            $att_stu = $att_stu->where('semesters_id','==',$request->semester);
+            $stu_data = $stu_data->where('semesters_id','==',$request->semester);
         }
         
 
-        // $stu_data = Student::all();
         $stu_course = Course::all();
         $stu_division = Division::all();
         $stu_semester = Semester::all();
         $stu_subject = Subject::all();
         $data = $request->all();
-        return view('attendence_view',compact('stu_course','stu_division','stu_semester','stu_subject','att_stu','data'));
+        return view('attendence_view',compact('stu_data','stu_course','stu_division','stu_semester','stu_subject','data'));
     }
 
 
-
+    // adding student 
     public function addStudent()
     {
         $stu_course = Course::all();
@@ -86,5 +89,9 @@ class   UserController extends Controller
         return redirect::to('/add_student');
     }
 
-    
+    // insert attendence 
+    public function insertAttendence()
+    {
+        
+    }
 }

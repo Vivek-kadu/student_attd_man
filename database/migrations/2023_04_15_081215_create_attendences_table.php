@@ -16,8 +16,24 @@ return new class extends Migration
         Schema::create('attendences', function (Blueprint $table) {
             $table->id();
 
+            $table->boolean('status');
+
+            $table->string('s_roll_no');
+            $table->string('s_name');
+
+            $table->unsignedBigInteger('s_course_id');
+            $table->foreign('s_course_id')->references('id')->on('courses');
             
-            $table->timestamps();
+            $table->unsignedBigInteger('s_semesters_id');
+            $table->foreign('s_semesters_id')->references('id')->on('semesters');
+
+            $table->unsignedBigInteger('s_divisions_id');
+            $table->foreign('s_divisions_id')->references('id')->on('divisions');
+
+            $table->unsignedBigInteger('s_subject_id');
+            $table->foreign('s_subject_id')->references('id')->on('subjects');
+
+            $table->timestamp('attendence_date');
         });
     }
 
