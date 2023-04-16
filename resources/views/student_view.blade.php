@@ -24,22 +24,56 @@
                                             Name
                                         </th>
                                         <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
-                                            saf
+                                            Email
                                         </th>
-                                        <th scope="col" class="p-4">
-                                            <span class="sr-only">Edit</span>
+                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                            Roll no
+                                        </th>
+                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                            Course
+                                        </th>
+                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                            Division 
+                                        </th>
+                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                            Semester 
+                                        </th>
+                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                            Gender 
+                                        </th>
+                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                            Phone number 
+                                        </th>
+                                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                            Addmission data 
+                                        </th>
+                                        <th colspan="2" scope="col" class="py-3 px-6 text-xs  font-medium tracking-wider text-center text-gray-700 uppercase">
+                                            Action  
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
+                                    @foreach($stu_data as $rows_data)
                                     <tr class="hover:bg-gray-100">
-                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">Apple Imac 27"</td>
-                                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">Desktop PC</td>
-                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">$1999</td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">{{ $rows_data->id }}</td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">{{ $rows_data->name }}</td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">{{ $rows_data->email }}</td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">{{ $rows_data->roll_no }}</td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">{{ $rows_data->course_details->course_name }}</td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">{{ $rows_data->division_details->division_name }}</td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">{{ $rows_data->semester_details->semester_name }}</td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">{{ $rows_data->gender }}</td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">{{ $rows_data->phone_no }}</td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">{{ $rows_data->addmission_data }}</td>
+                                        
                                         <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                                             <a href="#" class="text-blue-600 hover:underline">Edit</a>
                                         </td>
+                                        <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                                            <a href="#" class="text-blue-600 hover:underline">Delete</a>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -47,6 +81,7 @@
                 </div>
             </div>
         </div>
+     
         <!-- component -->
 
         <div class="m p-1 flex items-center justify-center">

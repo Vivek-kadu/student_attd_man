@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('year', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('year_number');
+        Schema::create('attendences', function (Blueprint $table) {
+            $table->id();
+
+            
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('year');
+        Schema::dropIfExists('attendences');
     }
 };

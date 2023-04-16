@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Year extends Model
+class attendence extends Model
 {
     use HasFactory;
-    protected $table = 'Year';
-    protected $primarykey = 'id';
+    protected $table = "attendences";
+    protected $primarykey = "id";
 }

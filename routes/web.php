@@ -27,10 +27,18 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/student_view', [UserController::class, 'studentView'])->name('show.student');
     Route::get('/attendence_view', [UserController::class, 'attendenceView'])->name('attendence.view');
+    Route::post('/attendence_view', [UserController::class, 'attendenceView'])->name('attendence.filter');
+    
+
+    // adding student 
     Route::get('/add_student', [UserController::class, 'addStudent'])->name('add.student');
+
+   
+    
     
     // submting form data fot insert student route 
     Route::post('/insert_student', [UserController::class, 'insertStudent'])->name('insert.student');
+
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
