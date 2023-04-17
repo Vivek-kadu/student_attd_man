@@ -18,8 +18,8 @@ return new class extends Migration
 
             $table->boolean('status');
 
-            $table->string('s_roll_no');
-            $table->string('s_name');
+           $table->unsignedBigInteger('students_id');
+           $table->foreign('students_id')->references('id')->on('students');
 
             $table->unsignedBigInteger('s_course_id');
             $table->foreign('s_course_id')->references('id')->on('courses');
@@ -34,6 +34,7 @@ return new class extends Migration
             $table->foreign('s_subject_id')->references('id')->on('subjects');
 
             $table->timestamp('attendence_date');
+            $table->timestamps();
         });
     }
 

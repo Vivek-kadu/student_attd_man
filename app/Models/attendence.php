@@ -11,7 +11,12 @@ class attendence extends Model
     use HasFactory;
     protected $table = "attendences";
     protected $primarykey = "id";
-
+    
+    public function student_details(): BelongsTo
+    {
+        return $this->belongsTo(Course::class,'students_id','id');
+    }
+    
     public function course_details(): BelongsTo
     {
         return $this->belongsTo(Course::class,'courses_id','id');

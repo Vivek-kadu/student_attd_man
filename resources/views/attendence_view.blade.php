@@ -14,7 +14,7 @@
 
                     <div class="inline-block min-w-full align-middle">
 
-                        <div class="overflow-hidden ">
+                        <div class="overflow-hidden p-2 ">
                             <form action="{{ route('attendence.filter') }}" method="post">
                                 @csrf
                                 <label for="crs">Course:
@@ -82,11 +82,11 @@
 
 
     <!-- table  -->
-    @if ($data != null)
+    @if ($data != null && $data['course'] != null && $data['semester'] != null && $data['division'] != null)
 
 
         {{-- @dd($data) --}}
-        <form action="{{route('insert.attendence')}}" method="post">
+        <form action="{{ route('insert.attendence') }}" method="post">
             @csrf
 
             {{-- course hidden  --}}
@@ -168,7 +168,8 @@
 
             {{-- timestamp  --}}
             <div class="hidden">
-                <input class="border rounded w-60 py-2 px-3 text-grey-darker" type="datetime-local" name="attendence_date" id="" value="">
+                <input class="border rounded w-60 py-2 px-3 text-grey-darker" type="datetime-local"
+                    name="attendence_date" id="" value="">
             </div>
             {{-- timestamp end  --}}
 
@@ -219,6 +220,11 @@
                                             @foreach ($stu_data as $rows_data)
                                                 <tr class="hover:bg-gray-100">
                                                     <td
+                                                        class="hidden py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
+                                                        <input type="text" value="{{ $rows_data->id }}"
+                                                            name="student_id">
+                                                    </td>
+                                                    <td
                                                         class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
                                                         <label><input type="radio" value="0"
                                                                 name="user_id_{{ $rows_data->id }}" checked>
@@ -226,6 +232,7 @@
                                                         <label><input type="radio" value="1"
                                                                 name="user_id_{{ $rows_data->id }}"> PR </label>
                                                     </td>
+
                                                     {{-- <td
                                                         class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
                                                         {{ $rows_data->id }}</td> --}}

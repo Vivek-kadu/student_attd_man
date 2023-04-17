@@ -90,8 +90,8 @@ class   UserController extends Controller
     }
 
     // insert attendence 
-    public function insertAttendence()
+    public function insertAttendence(Request $request)
     {
-        
+        dd($request);
     }
 }
