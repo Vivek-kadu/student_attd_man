@@ -199,8 +199,6 @@
                                                     class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                     Name
                                                 </th>
-
-
                                                 <th scope="col"
                                                     class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                                     Course
@@ -219,18 +217,19 @@
                                         <tbody class="bg-white divide-y divide-gray-200">
                                             @foreach ($stu_data as $rows_data)
                                                 <tr class="hover:bg-gray-100">
+                                                    
                                                     <td
-                                                        class="hidden py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
+                                                        class=" hidde n py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
                                                         <input type="text" value="{{ $rows_data->id }}"
-                                                            name="student_id">
+                                                            name="hidden_stu_id"> 
                                                     </td>
                                                     <td
                                                         class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
-                                                        <label><input type="radio" value="0"
-                                                                name="user_id_{{ $rows_data->id }}" checked>
+                                                        <label><input type="radio" value="0" 
+                                                                name="stu_id_{{ $rows_data->id }}" checked>
                                                             AB</label>/
                                                         <label><input type="radio" value="1"
-                                                                name="user_id_{{ $rows_data->id }}"> PR </label>
+                                                                name="stu_id_{{ $rows_data->id }}"> PR </label>
                                                     </td>
 
                                                     {{-- <td
