@@ -226,10 +226,12 @@
                                                     <td
                                                         class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
                                                         <label><input type="radio" value="0" 
-                                                                name="stu_id_{{ $rows_data->id }}" checked>
+                                                                {{-- name="stu_id_{{ $rows_data->id }}" checked> --}}
+                                                                name="{{ "stu_id_".$rows_data->id }}" checked>
                                                             AB</label>/
                                                         <label><input type="radio" value="1"
-                                                                name="stu_id_{{ $rows_data->id }}"> PR </label>
+                                                                {{-- name="stu_id_{{ $rows_data->id }}"> PR </label> --}}
+                                                                name="{{ "stu_id_".$rows_data->id }}"> PR </label>
                                                     </td>
 
                                                     {{-- <td

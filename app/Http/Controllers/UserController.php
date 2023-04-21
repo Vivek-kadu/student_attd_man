@@ -97,19 +97,25 @@ class   UserController extends Controller
 
         $att_stu = new attendence();
 
-        $att_stu->students_id = $request->hidden_stu_id;
         $att_stu->s_course_id = $request->course;
         $att_stu->s_semesters_id = $request->semester;
         $att_stu->s_divisions_id = $request->division;
         $att_stu->s_subject_id = $request->subject;
         $att_stu->attendence_date = $request->attendence_date;
-
-        $id = "stu_id_" . $request->hidden_stu_id; // setting name   
-        $att_stu->status = $request->stu_id_ . $id;
-
-        // dd($att_stu);
-        dd($request);
+        
+        $att_stu->students_id = $request->hidden_stu_id;
+        //radio button
+        $id = $request->hidden_stu_id;
+        $tag_name = "stu_id_".$id;
+        $val = $request->$tag_name;
+        $att_stu->status = $val;
+        // radio btn end
+       
         $att_stu->save();
+
+        return redirect::to('/dashboard');
+
+
 
     }
 }
