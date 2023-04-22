@@ -18,8 +18,8 @@ return new class extends Migration
 
             $table->boolean('status');
 
-           $table->unsignedBigInteger('students_id');
-           $table->foreign('students_id')->references('id')->on('students');
+            $table->unsignedBigInteger('students_id');
+            $table->foreign('students_id')->references('id')->on('students');
 
             $table->unsignedBigInteger('s_course_id');
             $table->foreign('s_course_id')->references('id')->on('courses');

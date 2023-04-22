@@ -37,4 +37,15 @@ class attendence extends Model
     {
         return $this->belongsTo(Subject::class,'subjects_id','id');
     }
+
+
+    protected $fillable = [
+        'status',
+        'students_id',
+        's_course_id ',
+        's_semesters_id ',
+        's_divisions_id ',
+        's_subject_id ',
+        'attendence_date'
+    ];
 }

@@ -91,7 +91,7 @@
 
             {{-- course hidden  --}}
             <select name="course" id="crs" class="hidden">
-                <option value="">Select any course</option>
+                {{-- <option value="">Select any course</option> --}}
 
                 @foreach ($stu_course as $row_crs)
                     {{-- <option value="{{$row_crs->id}}">{{$row_crs->course_name}}</option> --}}
@@ -127,7 +127,7 @@
 
             {{-- div hidden  --}}
             <select name="division" id="div" class="hidden">
-                <option value="">Select any division</option>
+                {{-- <option value="">Select any division</option> --}}
 
                 @foreach ($stu_division as $row_div)
                     @if ($data != null && $row_div->id == $data['division'])
@@ -153,13 +153,13 @@
                             </option>
 
                             {{-- @if ($data != null && $row_sub->id == $data['subject'])
-                    <option value="{{ $row_sub->id }}" selected>
-                        {{ $row_sub->subject_name }}
-                    </option>
-                    @else
-                    <option value="{{ $row_sub->id }}">{{ $row_sub->subject_name }}
-                    </option>
-                    @endif --}}
+                                <option value="{{ $row_sub->id }}" selected>
+                                    {{ $row_sub->subject_name }}
+                                </option>
+                            @else
+                                <option value="{{ $row_sub->id }}">{{ $row_sub->subject_name }}
+                                </option>
+                            @endif --}}
                         @endforeach
                     </select>
                 </label>
@@ -217,21 +217,20 @@
                                         <tbody class="bg-white divide-y divide-gray-200">
                                             @foreach ($stu_data as $rows_data)
                                                 <tr class="hover:bg-gray-100">
-                                                    
                                                     <td
-                                                        class=" hidde n py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
+                                                        class=" hidden py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
                                                         <input type="text" value="{{ $rows_data->id }}"
-                                                            name="hidden_stu_id"> 
+                                                            name="hidden_stu_id">
                                                     </td>
                                                     <td
                                                         class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
-                                                        <label><input type="radio" value="0" 
+                                                        <label><input type="radio" value="0"
                                                                 {{-- name="stu_id_{{ $rows_data->id }}" checked> --}}
-                                                                name="{{ "stu_id_".$rows_data->id }}" checked>
+                                                                name="{{ 'stu_id_' . $rows_data->id }}" checked>
                                                             AB</label>/
                                                         <label><input type="radio" value="1"
                                                                 {{-- name="stu_id_{{ $rows_data->id }}"> PR </label> --}}
-                                                                name="{{ "stu_id_".$rows_data->id }}"> PR </label>
+                                                                name="{{ 'stu_id_' . $rows_data->id }}"> PR </label>
                                                     </td>
 
                                                     {{-- <td
