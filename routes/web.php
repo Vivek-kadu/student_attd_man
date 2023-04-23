@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
     // attendence page 
     Route::get('/attendence_view', [UserController::class, 'attendenceView'])->name('attendence.view');
     Route::post('/attendence_view', [UserController::class, 'attendenceView'])->name('attendence.filter');
+    Route::post('/insert_attendence', [UserController::class, 'insertAttendence'])->name('insert.sujectreq');
+    Route::post('/insert_attendence', [UserController::class, 'insertAttendence'])->name('insert.attendence');
     
 
     // adding student 
@@ -40,7 +42,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/insert_student', [UserController::class, 'insertStudent'])->name('insert.student');
     
     
-    Route::post('/insert_attendence', [UserController::class, 'insertAttendence'])->name('insert.attendence');
     
     
 

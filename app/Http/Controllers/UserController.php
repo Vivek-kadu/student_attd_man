@@ -30,11 +30,7 @@ class   UserController extends Controller
     {
         // dd($request);
 
-
-
-        // $att_stu = Student::all();
         $stu_data = Student::all();
-
         // course filter
         if (isset($request->course) && $request->course != null) {
             $stu_data = $stu_data->where('courses_id', '==', $request->course);
@@ -94,33 +90,51 @@ class   UserController extends Controller
     // insert attendence 
     public function insertAttendence(Request $request)
     {
-        foreach($request->hidden_stu_id as $key=>$hidden_stu_id){
+        // dd($request);
 
-            
-            $att_stu = new attendence();
-            
-            $att_stu->s_course_id = $request->course;
-            $att_stu->s_semesters_id = $request->semester;
-            $att_stu->s_divisions_id = $request->division;
-            $att_stu->s_subject_id = $request->subject;
-            $att_stu->attendence_date = $request->attendence_date;
-            
-            $att_stu->students_id = $hidden_stu_id;
-            
-            //radio button
-            $id = $request->hidden_stu_id;
-            $tag_name = "stu_id_".$id;
-            $val = $request->$tag_name;
-            $att_stu->status = $val[$key];
-            // radio btn end
-            
-            dd($request);
-            $att_stu->save();
+
+        $stu_data = Student::all();
+
+         // course filter
+         if (isset($request->course) && $request->course != null) {
+            $stu_data = $stu_data->where('courses_id', '==', $request->course);
+        }
+        // div filter 
+        if (isset($request->division) && $request->division != null) {
+            $stu_data = $stu_data->where('divisions_id', '==', $request->division);
+        }
+        // sem filter 
+        if (isset($request->semester) && $request->semester != null) {
+            $stu_data = $stu_data->where('semesters_id', '==', $request->semester);
+        }
+
+        foreach ($stu_data as $row) {
+
+            $tag_name = "stu_id_" . $row->id;
+            if (isset($request->{$tag_name})) {
+                $val = $request->{$tag_name};
+
+                $att_stu = new attendence();
+
+                $att_stu->s_course_id = $request->course;
+                $att_stu->s_semesters_id = $request->semester;
+                $att_stu->s_divisions_id = $request->division;
+                $att_stu->s_subject_id = $request->subject;
+                $att_stu->attendence_date = $request->attendence_date;
+
+                // $att_stu->students_id = $hidden_stu_id;
+                $att_stu->students_id = $row->id;
+
+                //radio button
+                $id = $row->id;
+                $att_stu->status = $val;
+                // radio btn end
+
+                // dd($request);
+                $att_stu->save();
+            }
         }
 
         return redirect::to('/dashboard');
-
-
-
     }
 }
