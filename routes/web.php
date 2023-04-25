@@ -40,6 +40,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/add_student', [UserController::class, 'addStudent'])->name('add.student');
     // submting form data fot insert student route 
     Route::post('/insert_student', [UserController::class, 'insertStudent'])->name('insert.student');
+    Route::get('/edit_student/{id}', [UserController::class, 'EditStudent'])->name('edit.student');
+    Route::post('/update_student', [UserController::class, 'updateStudent'])->name('update.student');
+    Route::get('/delete_student/{id}', [UserController::class, 'deleteStudent'])->name('delete.student');
     
     
     

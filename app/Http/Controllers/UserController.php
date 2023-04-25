@@ -50,6 +50,7 @@ class   UserController extends Controller
         $stu_semester = Semester::all();
         $stu_subject = Subject::all();
         $data = $request->all();
+        
         return view('attendence_view', compact('stu_data', 'stu_course', 'stu_division', 'stu_semester', 'stu_subject', 'data'));
     }
 
@@ -86,6 +87,49 @@ class   UserController extends Controller
 
         return redirect::to('/add_student');
     }
+
+    // edit student 
+    public function EditStudent($id)
+    {
+        $stu_division = Division::all();
+        $stu_semester = Semester::all();
+        $stu_course = Course::all();
+        $student_edit_data = Student::where('id',$id)->first();
+        // dd($student_edit_data);
+        return view('edit_student',compact('student_edit_data','stu_course','stu_division','stu_semester'));
+    }
+
+    // updating student 
+
+    public function updateStudent(Request $request)
+    {
+        // dd($request->addmission_date);
+        $update = Student::where('id',$request->student_id)->update([
+            'name' => $request->student_name,
+            'email'=> $request->email,
+            'roll_no'=> $request->roll_no,
+            'courses_id' => $request->course_name,
+            'divisions_id' => $request->division_name,
+            'semesters_id' => $request->semester_name,
+            'gender' => $request->gender,
+            'phone_no' => $request->phone_no,
+            'addmission_data'=>$request->addmission_date,
+        ]);
+
+        return redirect::to('/student_view');
+    }
+
+
+    // delete student 
+
+    public function deleteStudent($id)
+    {
+        Student::where('id',$id)->delete();
+
+        return redirect::to('/student_view');
+
+    }
+
 
     // insert attendence 
     public function insertAttendence(Request $request)
