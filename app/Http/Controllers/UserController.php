@@ -175,6 +175,7 @@ class   UserController extends Controller
                 // radio btn end
 
                 // dd($request);
+                
                 $att_stu->save();
             }
         }
