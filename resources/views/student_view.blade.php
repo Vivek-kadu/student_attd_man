@@ -67,10 +67,10 @@
                                         <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">{{ $rows_data->addmission_data }}</td>
                                         
                                         <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                                            <a href="#" class="text-blue-600 hover:underline">Edit</a>
+                                            <a href="{{route('edit.student',[$rows_data->id])}}" class="text-blue-600 hover:underline">Edit</a>
                                         </td>
                                         <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                                            <a href="#" class="text-blue-600 hover:underline">Delete</a>
+                                            <a href="{{route('delete.student',[$rows_data->id])}}" class="text-blue-600 hover:underline">Delete</a>
                                         </td>
                                     </tr>
                                     @endforeach

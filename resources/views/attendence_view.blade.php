@@ -4,6 +4,7 @@
             Attendence of date : {{ now()->format('d-m-Y') }}
         </h2>
     </x-slot>
+    
     <!-- filter  -->
     <div class="py-2">
         <div class="max-w-3xl mx-auto flex items-center justify-center ">
