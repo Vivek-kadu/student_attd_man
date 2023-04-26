@@ -19,10 +19,29 @@ class   UserController extends Controller
 {
 
     // student view 
-    public function studentView()
+    public function studentView(Request $request)
     {
         $stu_data = Student::all();
-        return view('student_view', compact('stu_data'));
+        // course filter
+        if (isset($request->course) && $request->course != null) {
+            $stu_data = $stu_data->where('courses_id', '==', $request->course);
+        }
+        // div filter 
+        if (isset($request->division) && $request->division != null) {
+            $stu_data = $stu_data->where('divisions_id', '==', $request->division);
+        }
+        // sem filter 
+        if (isset($request->semester) && $request->semester != null) {
+            $stu_data = $stu_data->where('semesters_id', '==', $request->semester);
+        }
+
+        $stu_course = Course::all();
+        $stu_division = Division::all();
+        $stu_semester = Semester::all();
+        $stu_subject = Subject::all();
+        $data = $request->all();
+
+        return view('student_view', compact('stu_data', 'stu_course', 'stu_division', 'stu_semester', 'stu_subject', 'data'));
     }
 
     // attendence View page whole logic 
@@ -175,6 +194,7 @@ class   UserController extends Controller
                 // radio btn end
 
                 // dd($request);
+                
                 $att_stu->save();
             }
         }

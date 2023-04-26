@@ -19,19 +19,19 @@ return new class extends Migration
             $table->boolean('status');
 
             $table->unsignedBigInteger('students_id');
-            $table->foreign('students_id')->references('id')->on('students');
+            $table->foreign('students_id')->references('id')->on('students')->onDelete('cascade');
 
             $table->unsignedBigInteger('s_course_id');
-            $table->foreign('s_course_id')->references('id')->on('courses');
+            $table->foreign('s_course_id')->references('id')->on('courses')->onDelete('cascade');
             
             $table->unsignedBigInteger('s_semesters_id');
-            $table->foreign('s_semesters_id')->references('id')->on('semesters');
+            $table->foreign('s_semesters_id')->references('id')->on('semesters')->onDelete('cascade');
 
             $table->unsignedBigInteger('s_divisions_id');
-            $table->foreign('s_divisions_id')->references('id')->on('divisions');
+            $table->foreign('s_divisions_id')->references('id')->on('divisions')->onDelete('cascade');
 
             $table->unsignedBigInteger('s_subject_id');
-            $table->foreign('s_subject_id')->references('id')->on('subjects');
+            $table->foreign('s_subject_id')->references('id')->on('subjects')->onDelete('cascade');
 
             $table->timestamp('attendence_date');
             $table->timestamps();

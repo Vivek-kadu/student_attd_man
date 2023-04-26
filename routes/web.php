@@ -26,8 +26,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
 
-    // student view page 
-    Route::get('/student_view', [UserController::class, 'studentView'])->name('show.student');
+    
 
     // attendence page 
     Route::get('/attendence_view', [UserController::class, 'attendenceView'])->name('attendence.view');
@@ -36,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/insert_attendence', [UserController::class, 'insertAttendence'])->name('insert.attendence');
     
 
+    // student view page 
+    Route::get('/student_view', [UserController::class, 'studentView'])->name('show.student');
+    Route::post('/student_view', [UserController::class, 'studentView'])->name('student.filter');
     // adding student 
     Route::get('/add_student', [UserController::class, 'addStudent'])->name('add.student');
     // submting form data fot insert student route 
