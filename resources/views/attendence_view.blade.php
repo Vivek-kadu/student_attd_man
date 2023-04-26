@@ -70,26 +70,6 @@
                                         @endforeach
                                     </select>
                                 </label>
-
-                                {{-- <label for="sub">Attendence of Subject :
-                                    <select name="subject" id="sub">
-                                        <option value="">choose subject
-                                        </option>
-                                        @foreach ($stu_subject as $row_sub)
-                                            <option value="{{ $row_sub->id }}">{{ $row_sub->subject_name }}
-                                            </option>
-                
-                                            @if ($data != null && $row_sub->id == $data['subject'])
-                                                <option value="{{ $row_sub->id }}" selected>
-                                                    {{ $row_sub->subject_name }}
-                                                </option>
-                                            @else
-                                                <option value="{{ $row_sub->id }}">{{ $row_sub->subject_name }}
-                                                </option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </label> --}}
                                 <input type="submit" value="submit" name="submit_btn">
                             </form>
                         </div>
