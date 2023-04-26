@@ -21,13 +21,13 @@ return new class extends Migration
             $table->string('email');
 
             $table->unsignedBigInteger('courses_id');
-            $table->foreign('courses_id')->references('id')->on('courses');
+            $table->foreign('courses_id')->references('id')->on('courses')->onDelete('cascade');
             
             $table->unsignedBigInteger('semesters_id');
-            $table->foreign('semesters_id')->references('id')->on('semesters');
+            $table->foreign('semesters_id')->references('id')->on('semesters')->onDelete('cascade');
 
             $table->unsignedBigInteger('divisions_id');
-            $table->foreign('divisions_id')->references('id')->on('divisions');
+            $table->foreign('divisions_id')->references('id')->on('divisions')->onDelete('cascade');
             
             // $table->unsignedBigInteger('subject_id');
             // $table->foreign('subject_id')->references('id')->on('subjects');
