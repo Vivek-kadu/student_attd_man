@@ -35,7 +35,7 @@
                 </a>
             </div>
             <div class="max-w-xs max-h-min bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
-                <a href="" >
+                <a href="{{route('show.history')}}" >
                     <div class="p-6 text-gray-900 dark:text-gray-100 text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-20 h-20">
