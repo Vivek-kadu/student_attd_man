@@ -22,6 +22,7 @@ class   UserController extends Controller
     public function studentView(Request $request)
     {
         $stu_data = Student::all();
+    
         // course filter
         if (isset($request->course) && $request->course != null) {
             $stu_data = $stu_data->where('courses_id', '==', $request->course);
@@ -40,6 +41,7 @@ class   UserController extends Controller
         $stu_semester = Semester::all();
         $stu_subject = Subject::all();
         $data = $request->all();
+        // dd($stu_data);
 
         return view('student_view', compact('stu_data', 'stu_course', 'stu_division', 'stu_semester', 'stu_subject', 'data'));
     }
@@ -201,4 +203,19 @@ class   UserController extends Controller
 
         return redirect::to('/dashboard');
     }
+
+
+    
+    // history logic--------------------------------------------------------------------------------------------------
+    public function historyView()
+    {
+        return view("history");
+    } 
+
+
+
+
+
+
+
 }

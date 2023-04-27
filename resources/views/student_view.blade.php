@@ -5,7 +5,7 @@
             {{ __('Students Details') }}
         </h2>
     </x-slot>
-
+{{-- {{$data}} --}}
     <!-- filter  -->
     <div class="py-2">
         <div class="max-w-3xl mx-auto flex items-center justify-center ">
@@ -17,12 +17,12 @@
                     <div class="inline-block min-w-full align-middle">
 
                         <div class="overflow-hidden p-2 ">
+
                             <form action="{{ route('student.filter') }}" method="post">
                                 @csrf
-                                <label for="roll">Roll No. :
-                                    <input type="text" >
-
-                                </label>
+                                {{-- <label for="nm">student name :
+                                    <input type="text" name="stu_nm" id="nm" value="">
+                                </label> --}}
                                 <label for="crs">Course:
                                     <select name="course" id="crs">
                                         <option value="">Select any course</option>

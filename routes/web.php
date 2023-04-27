@@ -38,17 +38,14 @@ Route::middleware('auth')->group(function () {
     // student view page 
     Route::get('/student_view', [UserController::class, 'studentView'])->name('show.student');
     Route::post('/student_view', [UserController::class, 'studentView'])->name('student.filter');
-    // adding student 
-    Route::get('/add_student', [UserController::class, 'addStudent'])->name('add.student');
-    // submting form data fot insert student route 
-    Route::post('/insert_student', [UserController::class, 'insertStudent'])->name('insert.student');
+    Route::get('/add_student', [UserController::class, 'addStudent'])->name('add.student');    //add student
+    Route::post('/insert_student', [UserController::class, 'insertStudent'])->name('insert.student'); //submting form data fot insert student route 
     Route::get('/edit_student/{id}', [UserController::class, 'EditStudent'])->name('edit.student');
     Route::post('/update_student', [UserController::class, 'updateStudent'])->name('update.student');
     Route::get('/delete_student/{id}', [UserController::class, 'deleteStudent'])->name('delete.student');
     
-    
-    
-    
+    //history route
+    Route::get('/history_view', [UserController::class, 'historyView'])->name('show.history');
 
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
