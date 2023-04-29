@@ -14,28 +14,28 @@ class attendence extends Model
     
     public function student_details(): BelongsTo
     {
-        return $this->belongsTo(Course::class,'students_id','id');
+        return $this->belongsTo(Student::class,'students_id','id');
     }
     
     public function course_details(): BelongsTo
     {
-        return $this->belongsTo(Course::class,'courses_id','id');
+        return $this->belongsTo(Course::class,'s_course_id','id');
     }
 
     public function division_details(): BelongsTo
     {
-        return $this->belongsTo(Division::class,'divisions_id','id');
+        return $this->belongsTo(Division::class,'s_divisions_id','id');
     }
     
     public function semester_details(): BelongsTo
     {
-        return $this->belongsTo(Semester::class,'semesters_id','id');
+        return $this->belongsTo(Semester::class,'s_semesters_id','id');
     }
     
     
     public function subject_details(): BelongsTo
     {
-        return $this->belongsTo(Subject::class,'subjects_id','id');
+        return $this->belongsTo(Subject::class,'s_subject_id','id');
     }
 
 
