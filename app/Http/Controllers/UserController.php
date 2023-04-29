@@ -209,13 +209,9 @@ class   UserController extends Controller
     // history logic--------------------------------------------------------------------------------------------------
     public function historyView()
     {
-        return view("history");
+        $attendence_data =attendence::get()->all();
+        // dd($attendence_data);
+        return view("history",compact('attendence_data'));
     } 
-
-
-
-
-
-
 
 }
