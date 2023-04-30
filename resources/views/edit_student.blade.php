@@ -5,7 +5,7 @@
             {{-- {{ __('Dashboard') }}  --}}
         </h2>
     </x-slot>
-    {{ $student_edit_data }}
+    {{-- {{ $student_edit_data }} --}}
 
     <!-- component -->
     <div class="flex items-center justify-center p-12 bg-transparent">
