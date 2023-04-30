@@ -46,6 +46,8 @@ Route::middleware('auth')->group(function () {
     
     //history route
     Route::get('/history_view', [UserController::class, 'historyView'])->name('show.history');
+    Route::post('/history_view', [UserController::class, 'historyFilter'])->name('history.filter');
+
 
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

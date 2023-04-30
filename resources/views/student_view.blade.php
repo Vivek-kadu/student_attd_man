@@ -72,7 +72,7 @@
                                         @endforeach
                                     </select>
                                 </label>
-                                <input type="submit" value="submit" name="submit_btn">
+                                <input type="submit" value="submit" name="">
                             </form>
                         </div>
                     </div>
