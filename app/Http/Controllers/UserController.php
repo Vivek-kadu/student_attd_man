@@ -46,36 +46,6 @@ class   UserController extends Controller
         return view('student_view', compact('stu_data', 'stu_course', 'stu_division', 'stu_semester', 'stu_subject', 'data'));
     }
 
-    // attendence View page whole logic 
-    public function attendenceView(Request $request)
-    {
-        // dd($request);
-
-        $stu_data = Student::all();
-        // course filter
-        if (isset($request->course) && $request->course != null) {
-            $stu_data = $stu_data->where('courses_id', '==', $request->course);
-        }
-        // div filter 
-        if (isset($request->division) && $request->division != null) {
-            $stu_data = $stu_data->where('divisions_id', '==', $request->division);
-        }
-        // sem filter 
-        if (isset($request->semester) && $request->semester != null) {
-            $stu_data = $stu_data->where('semesters_id', '==', $request->semester);
-        }
-
-
-        $stu_course = Course::all();
-        $stu_division = Division::all();
-        $stu_semester = Semester::all();
-        $stu_subject = Subject::all();
-        $data = $request->all();
-        
-        return view('attendence_view', compact('stu_data', 'stu_course', 'stu_division', 'stu_semester', 'stu_subject', 'data'));
-    }
-
-
     // adding student 
     public function addStudent()
     {
@@ -91,6 +61,10 @@ class   UserController extends Controller
     public function insertStudent(Request $request)
     {
 
+        $request->validate([
+            'name'=>'required|alpha:ascii',
+            'email'=>'email',
+        ]);
         // dd($request);
         // dd($request->course_name);
         $stu =  new  Student();
@@ -150,7 +124,43 @@ class   UserController extends Controller
         return redirect::to('/student_view');
 
     }
+ 
+    // -----------------------------------------------------------------------------------------------------------------
 
+
+    // attendence View page whole logic 
+    public function attendenceView(Request $request)
+    {
+        // dd($request);
+
+        $stu_data = Student::all();
+        // course filter
+        if (isset($request->course) && $request->course != null) {
+            $stu_data = $stu_data->where('courses_id', '==', $request->course);
+        }
+        // div filter 
+        if (isset($request->division) && $request->division != null) {
+            $stu_data = $stu_data->where('divisions_id', '==', $request->division);
+        }
+        // sem filter 
+        if (isset($request->semester) && $request->semester != null) {
+            $stu_data = $stu_data->where('semesters_id', '==', $request->semester);
+        }
+
+
+
+
+        $stu_course = Course::all();
+        $stu_division = Division::all();
+        $stu_semester = Semester::all();
+        $stu_subject = Subject::all();
+        $data = $request->all();
+        
+        return view('attendence_view', compact('stu_data', 'stu_course', 'stu_division', 'stu_semester', 'stu_subject', 'data'));
+    }
+
+
+  
 
     // insert attendence 
     public function insertAttendence(Request $request)
