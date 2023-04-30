@@ -11,8 +11,91 @@
     {{-- @foreach ($attendence_data as $item)
         {{ $item }}
     @endforeach --}}
-    <div class="py-12">
+        <!-- filter  -->
+        <div class="py-2">
+            <div class="max-w-3xl mx-auto flex items-center justify-center ">
+    
+                <div class="flex flex-col justify-center">
+    
+                    <div class="overflow-x-auto shadow-md ">
+    
+                        <div class="inline-block min-w-full align-middle">
+    
+                            <div class="overflow-hidden p-2 ">
+    
+                                <form action="{{ route('history.filter') }}" method="post">
+                                    @csrf
+                                    {{-- <label for="nm">student name :
+                                        <input type="text" name="stu_nm" id="nm" value="">
+                                    </label> --}}
+                                    <label for="crs">Course:
+                                        <select name="course" id="crs">
+                                            <option value="">Select any course</option>
+                                            @foreach ($stu_course as $row_crs)
+                                                {{-- <option value="{{$row_crs->id}}">{{$row_crs->course_name}}</option> --}}
+    
+                                                @if ($data != null && $row_crs->id == $data['course'])
+                                                    <option value="{{ $row_crs->id }}" selected>{{ $row_crs->course_name }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $row_crs->id }}">{{ $row_crs->course_name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </label>
+    
+                                    <label for="sem">Semester:
+                                        <select name="semester" id="sem">
+                                            <option value="">Select any semester</option>
+                                            @foreach ($stu_semester as $row_sem)
+                                                {{-- <option value="{{$row_sem->id}}">{{$row_sem->semester_name}}</option> --}}
+    
+                                                @if ($data != null && $row_sem->id == $data['semester'])
+                                                    <option value="{{ $row_sem->id }}" selected>
+                                                        {{ $row_sem->semester_name }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $row_sem->id }}">{{ $row_sem->semester_name }}
+                                                    </option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </label>
+    
+                                    <label for="div">Division:
+                                        <select name="division" id="div">
+                                            <option value="">Select any division</option>
+                                            @foreach ($stu_division as $row_div)
+                                                @if ($data != null && $row_div->id == $data['division'])
+                                                    <option value="{{ $row_div->id }}" selected>
+                                                        {{ $row_div->division_name }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $row_div->id }}">{{ $row_div->division_name }}
+                                                    </option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </label>
+                                    <br><br>
+                                    <label for="s_date">From:
+                                        <input type="date" name="start_date" id="s_date"> 
+                                    </label>
+                                    <label for="e_date">To:
+                                        <input type="date" name="end_date" id="e_date"> 
+                                    </label>
+
+                                    <input type="submit" value="submit" name="">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- component -->
+    <div class="py-12">
         <!-- This is an example component -->
         <div class="max-w-2xl mx-auto flex items-center justify-center ">
 
