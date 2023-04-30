@@ -5,14 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\attendence;
 use App\Models\Course;
 use App\Models\Division;
-use App\Models\Master;
 use App\Models\Semester;
 use App\Models\Student;
 use App\Models\Subject;
-use App\Models\User;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Redirect;
 
 class   UserController extends Controller
@@ -62,8 +58,14 @@ class   UserController extends Controller
     {
 
         $request->validate([
-            'name' => 'required|alpha:ascii',
-
+            'student_name'=>'required|max:30|alpha:ascii',
+            'email'=>'required|email',
+            'roll_no'=>'required|digits_between:1,60',
+            // 'course_name'=>'required',
+            // 'division_name'=>'required',
+            // 'semester_name'=>'required',
+            'gender'=>'required',
+            'phone_no'=>'required|digits:10',
 
         ]);
         // dd($request);
@@ -99,6 +101,13 @@ class   UserController extends Controller
 
     public function updateStudent(Request $request)
     {
+        $request->validate([
+            'student_name'=>'required|max:30|alpha:ascii',
+            'email'=>'required|email|students,email,'.$request->id,
+            'roll_no'=>'required|digits_between:1,60',
+            'gender'=>'required',
+            'phone_no'=>'required|digits:10',
+        ]);
         // dd($request->addmission_date);
         $update = Student::where('id', $request->student_id)->update([
             'name' => $request->student_name,
@@ -221,37 +230,6 @@ class   UserController extends Controller
     {
         $attendence_data = attendence::all();
 
-        // // course filter
-        // if (isset($request->course) && $request->course != null) {
-        //     $attendence_data = $attendence_data->where('s_course_id', '==', $request->course);
-        // }
-        // // div filter 
-        // if (isset($request->division) && $request->division != null) {
-        //     $attendence_data = $attendence_data->where('s_divisions_id', '==', $request->division);
-        // }
-        // // sem filter 
-        // if (isset($request->semester) && $request->semester != null) {
-        //     $attendence_data = $attendence_data->where('s_semesters_id', '==', $request->semester);
-        // }
-        // // date filter
-        // if (isset($request->start_date) && isset($request->end_date) && $request->start_date != null && $request->end_date != null) {
-        //     $attendence_data = $attendence_data->whereBetween('attendence_date',[$request->start_date,$$request->end_start]);
-        //     // whereBetween('addmission_data', [$request->start_date, $request->end_date]);
-        // }
-        
-       
-        $stu_course = Course::all();
-        $stu_division = Division::all();
-        $stu_semester = Semester::all();
-        $data = $request->all();
-
-        return view("history", compact('attendence_data','stu_course','stu_division','stu_semester','data'));
-    }
-
-    public function historyFilter(Request $request)
-    {
-        $attendence_data = attendence::all();
-
         // course filter
         if (isset($request->course) && $request->course != null) {
             $attendence_data = $attendence_data->where('s_course_id', '==', $request->course);
@@ -266,13 +244,16 @@ class   UserController extends Controller
         }
         // date filter
         if (isset($request->start_date) && isset($request->end_date) && $request->start_date != null && $request->end_date != null) {
-            $attendence_data = $attendence_data->whereBetween('attendence_date',[$request->start_date,$$request->end_start]);
-            // whereBetween('addmission_data', [$request->start_date, $request->end_date]);
+            $attendence_data = $attendence_data->whereBetween('attendence_date',[$request->start_date,$request->end_start]);
         }
         
        
-        
+        $stu_course = Course::all();
+        $stu_division = Division::all();
+        $stu_semester = Semester::all();
+        $data = $request->all();
 
-        return view("history", compact('attendence_data'));
+        return view("history", compact('attendence_data','stu_course','stu_division','stu_semester','data'));
     }
+
 }
