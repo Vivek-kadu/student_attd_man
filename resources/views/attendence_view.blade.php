@@ -143,7 +143,7 @@
             {{-- attendence of subject --}}
             <div class="max-w-3xl mx-auto m-3 flex items-center justify-center">
                 <label for="sub">Attendence of Subject :
-                    <select name="subject" id="sub">
+                    <select name="subject" id="sub" required>
                         <option value="">choose subject
                         </option>
                         @foreach ($stu_subject as $row_sub)
