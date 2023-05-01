@@ -245,6 +245,8 @@ class   UserController extends Controller
         // date filter
         if (isset($request->start_date) && isset($request->end_date) && $request->start_date != null && $request->end_date != null) {
             $attendence_data = $attendence_data->whereBetween('attendence_date',[$request->start_date,$request->end_start]);
+            // dd($request->start_date);
+            dd(date($request->start_date));
         }
         
        
